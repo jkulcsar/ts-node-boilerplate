@@ -38,6 +38,25 @@ beforeAll(async () => {
     });
 });
 
+afterAll(async () => {
+    try {
+      // cleanup database(s)
+      await deleteAllUsers();
+      
+      // Connection to Mongo killed.
+      await mongoose.disconnect();
+      
+      // Server connection closed.
+      //await server.close();
+    } catch (error) {
+      console.log(`
+        Error in afterAll() of TEST environment: 
+        ${error}
+      `);
+      throw error;
+    }
+});
+
 beforeEach(async () => {
     await deleteAllUsers();
 });
