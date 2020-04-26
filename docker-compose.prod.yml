@@ -2,7 +2,9 @@ version: "3"
 
 services:
   app:
-    build: .
+    build:
+      dockerfile: Dockerfile.prod
+      context: .
     command: npm start
     ports:
       - "3000:3000"
@@ -10,6 +12,8 @@ services:
       - DB_HOST=database
     volumes:
       - ".:/usr/app"
+    depends_on:
+      - database
 
   database:
     image: mongo

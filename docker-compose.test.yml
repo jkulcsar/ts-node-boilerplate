@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  test:
+    build:
+      dockerfile: Dockerfile.test
+      context: .
+    environment:
+      - CI=true
+      - DB_HOST=database
+    depends_on:
+      - database
+    command: ["npm", "run", "test"]
+
+  database:
+    image: mongo

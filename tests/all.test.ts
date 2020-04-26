@@ -140,7 +140,7 @@ describe("User", () => {
         expect(response.status).toEqual(200);
         expect(body).not.toBeNull();
     });
-    it("UPDATE / User", async () => {
+    it.skip("UPDATE / User", async () => {
         const userCreated = await createUser(user);
         let nameUpdated = 'User Updated';
         userCreated.name = nameUpdated;

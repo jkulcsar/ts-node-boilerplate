@@ -1,0 +1,35 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+# not sure if should build with docker here or just 
+#  - docker build -t $DOCKER_ID/ts-node-boilerplate -f ./Dockerfile.dev ./
+
+# perhaps we need to install a new version of docker-compose
+# for now just show the current version
+install:
+  - docker-compose version
+
+# before_script:
+#   - docker-compose -f docker-compose.test.yml up --build
+
+script:
+    - docker-compose -f docker-compose.test.yml up --build
+
+after_script:
+  - docker-compose -f docker-compose.test.yml down
+
+after_success:
+  - docker build -f Dockerfile.prod -t $DOCKER_ID/ts-node-boilerplate ./
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take those images and push them to docker hub
+  - docker push $DOCKER_ID/ts-node-boilerplate
+ 
+# deploy:
+# still to do: how to deploy to a dockerized environment through SSH
+# and run a docker-compose up in that environment?
+# or just use a cloud deployment for now?

@@ -40,7 +40,7 @@ export class UserService {
 
     public async update(id: string, body: IUser): Promise<IUser> {
         try {
-            return await UserRepository.findOneAndUpdate(id, body, { new: true });
+            return await UserRepository.findOneAndUpdate({_id: id}, body, { new: true });
         } catch (error) {
             this.handleError(error);
         }
