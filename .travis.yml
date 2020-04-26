@@ -20,7 +20,8 @@ install:
 
 script:
 #    - docker-compose -f docker-compose.test.yml up --build
-- docker run -e CI=true $DOCKER_ID/ts-node-boilerplate npm test -- --coverage
+# env variable CI=true is always available in Travis CI
+- docker run $DOCKER_ID/ts-node-boilerplate npm test -- --coverage
 
 #after_script:
 #  - docker-compose -f docker-compose.test.yml down

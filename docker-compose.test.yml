@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile.test
       context: .
     environment:
-      - CI=true
       - DB_HOST=database
     depends_on:
       - database
