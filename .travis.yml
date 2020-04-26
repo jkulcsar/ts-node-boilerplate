@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - lts
+  - lts/*
 sudo: required
 services:
   - docker
@@ -8,7 +8,7 @@ services:
 
 before_install:
 # not sure if should build with docker here or just 
-  - docker build -t $DOCKER_ID/ts-node-boilerplate -f ./Dockerfile.dev ./
+  - docker build -t $DOCKER_ID/ts-node-boilerplate -f ./Dockerfile.test ./
 
 # perhaps we need to install a new version of docker-compose
 # for now just show the current version
