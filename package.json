@@ -10,7 +10,7 @@
     "debug": "nodemon --exec node --inspect=0.0.0.0:9229 --require ts-node/register src/server.ts",
     "dev": "npm run debug",
     "generate": "tsoa swagger-and-routes",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
