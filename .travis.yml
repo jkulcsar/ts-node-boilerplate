@@ -4,7 +4,7 @@ node_js:
 sudo: required
 services:
   - docker
-  - mongodb
+  - mongo
 
 before_install:
 # not sure if should build with docker here or just 

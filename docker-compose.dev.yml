@@ -1,11 +1,11 @@
-version: "3"
+version: '3.4'
 
 services:
   app:
     build:
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
       context: .
-    command: npm run start
+    command: npm run dev
     ports:
       - "3000:3000"
     environment:

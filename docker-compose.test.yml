@@ -10,7 +10,7 @@ services:
       - DB_HOST=database
     depends_on:
       - database
-    command: ["npm", "run", "test"]
+    command: npm run test
 
   database:
     image: mongo
