@@ -35,7 +35,7 @@ after_success:
   - docker build -f Dockerfile.prod -t $DOCKER_ID/ts-node-boilerplate ./
 
   # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those images and push them to docker hub
   - docker push $DOCKER_ID/ts-node-boilerplate
